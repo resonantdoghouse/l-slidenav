@@ -1,0 +1,86 @@
+@import 'partials/_reset.scss';
+@import 'partials/_variables.scss';
+@import 'partials/_mixins.scss';
+// Sidebar
+.sidebar-options {
+    position: absolute;
+    width: 250px;
+    height: 100vh;
+    background: $black;
+    background: linear-gradient(to right, rgba($black, 0.1), rgba($black, 0.9) 90%, rgba($black, 0.9)), url(https://picsum.photos/800/1000?image=1032) center;
+    background-size: cover; // Hamburger icon shown when menu is off screen
+    display: flex;
+    justify-content: center;
+    .toggle-btn {
+        position: absolute;
+        z-index: 99;
+        left: 0;
+        top: 0;
+        background: $white;
+        border: 1px solid $white;
+        @include transition-base(.6s);
+        .hamburger-color {
+            @include transition-base(1s);
+            fill: $blue;
+        }
+        &.sidebar-open {
+            right: 250px;
+            background: $blue;
+            border: 2px solid lighten($blue, 10%);
+            .hamburger-color {
+                fill: $white;
+            }
+        }
+        &:focus {
+            outline: 0;
+            border: 1px solid lighten($blue, 10%);
+        }
+    }
+    &__list {
+        text-transform: lowercase;
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        a {
+            line-height: 1.8em;
+            font-size: 2em;
+            color: rgba($white, 0.2);
+            text-decoration: none;
+            transition: .5s;
+            &:hover,
+            &:focus {
+                color: lighten($blue, 60%);
+            }
+        }
+    }
+}
+
+// Sidebar Toggle
+.sidebar-open {
+    transform: translate3d(250px, 0, 0);
+}
+
+// Main Content Section
+.main-content {
+    background: url(https://picsum.photos/2000/1000?image=1002) center;
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    flex: 1 1 auto;
+    @include transition-base(.6s);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        color: rgba($white, 0.2);
+        font-size: 6vw;
+        transition: .5s;
+        &:hover {
+            color: rgba($white, 0.5);
+        }
+    }
+}
